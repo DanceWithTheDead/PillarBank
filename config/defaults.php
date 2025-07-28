@@ -15,7 +15,7 @@ return [
     | KYC
     |--------------------------------------------------------------------------
     */
-    'kyc_url' => env('KYC_URL'),
+    'kyc_url' => env('SIMULATOR_URL'),
     'kyc_secret_key' => env('KYC_SECRET_KEY'),
 
     /*
