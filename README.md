@@ -4,7 +4,7 @@ Pillar Bank is a simulated banking application that interacts with a [Bank Syste
 
 ## Project Setup
 ```
-docker compose up --build
+docker compose up --d
 ```
 
 Set the following values in .env and .env.testing:  
