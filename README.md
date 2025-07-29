@@ -11,7 +11,7 @@ Set the following values in .env and .env.testing:
 
 ```
 KYC_SECRET_KEY=
-KYC_URL=
+SIMULATOR_URL=
 WEBHOOK_TRANSACTION_TOKEN_PILLARBANK_SECRET=
 ```
 
