@@ -8,6 +8,7 @@ use App\Repositories\UserRepository;
 use App\Support\BankSimulatorApiService;
 use Illuminate\Support\Facades\Hash;
 use RonasIT\Support\Services\EntityService;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 /**
  * @property UserRepository $repository
@@ -37,5 +38,12 @@ class UserService extends EntityService
         }
 
         return $user;
+    }
+
+    public function logout()
+    {
+        $token = JWTAuth::getToken();
+
+        JWTAuth::invalidate($token);
     }
 }

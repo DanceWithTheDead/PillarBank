@@ -29,4 +29,7 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::get('transactions/{id}', 'get')->whereNumber('id');
         Route::get('transactions', 'search');
     });
+    Route::controller(AuthController::class)->group(function () {
+        Route::post('logout', 'logout');
+    });
 });

@@ -372,4 +372,28 @@ class AuthTest extends TestCase
 
         $response->assertJsonValidationErrors(['phone', 'password']);
     }
+
+    public function testLogout()
+    {
+        JWTAuth::shouldReceive('invalidate')
+            ->once()
+            ->andReturn(true);
+
+        JWTAuth::shouldReceive('getToken')
+            ->once()
+            ->andReturn('some-token');
+
+        $response = $this->actingAs(self::$user)->postJson('/logout');
+
+        $response->assertOk();
+    }
+
+    public function testLogoutNoAuthentication()
+    {
+        $response = $this->postJson('/logout');
+
+        $response->assertStatus(401);
+
+        $response->assertJson(['message' => 'Unauthenticated.']);
+    }
 }
