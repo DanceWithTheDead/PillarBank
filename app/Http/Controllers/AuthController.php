@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Resources\Auth\SuccessLoginResource;
 use App\Services\UserService;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\LockedHttpException;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -46,5 +47,12 @@ class AuthController extends Controller
         }
 
         return SuccessLoginResource::make($token, $user);
+    }
+
+    public function logout(UserService $service): Response
+    {
+        $service->logout();
+
+        return response('', Response::HTTP_OK);
     }
 }
